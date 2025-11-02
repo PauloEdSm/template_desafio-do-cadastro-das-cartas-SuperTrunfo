@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 
 // Desafio Super Trunfo - Países
@@ -8,33 +9,26 @@ int main() {
   // Área para definição das variáveis para armazenar as propriedades das cidades
 
     //Variavel que armazena a sigla do estado escolhido
-   char estadoCarta1 [3];
-   char estadoCarta2 [3];
+   char estadoCarta1 [3], estadoCarta2 [3];
 
    //Variavel que armazena o codigo para identificacao da carta
-   char codigoCarta1[5];   
-   char codigoCarta2[5];   
+   char codigoCarta1[5], codigoCarta2[5];   
 
    //Variavel que armazena o nome da cidade
-   char nomeDaCidadeCarta1[30];
-   char nomeDaCidadeCarta2[30];
+   char nomeDaCidadeCarta1[30], nomeDaCidadeCarta2[30];
    
    //Variavel que armazena a quantidade de habitantes da cidade 
-   int quantidadeDeHabitantesCarta1;
-   int quantidadeDeHabitantesCarta2;
+   int quantidadeDeHabitantesCarta1, quantidadeDeHabitantesCarta2;
 
    //Variavel que armazena a area da cidade escolhida
-   float areaCarta1;
-   float areaCarta2;
+   float areaCarta1, areaCarta2;
 
    
    //Variavel que armazena o produto interno bruto(PIB) da cidade
-   float produtoInternoBrutoCarta1;
-   float produtoInternoBrutoCarta2;
+   float produtoInternoBrutoCarta1, produtoInternoBrutoCarta2;
 
    //Quantidade de pontos turisticos da cidade
-   int quantidadesPontosTuristicosCarta1;
-   int quantidadesPontosTuristicosCarta2;
+   int quantidadesPontosTuristicosCarta1, quantidadesPontosTuristicosCarta2;
 
   // Área para entrada de dados
     //carta 1
@@ -63,7 +57,11 @@ int main() {
    //Solicitacao para que o usuario digite o produto interno bruto(PIB)
    printf("\nProduto Interno Bruto da cidade %s.\nEnvie aqui: ", nomeDaCidadeCarta1);
    scanf("%f", &produtoInternoBrutoCarta1);
-  
+
+
+  //Solicitacao para que o usuario digite a quantidade de pontos turisticos
+  printf("\nQuantidade de pontos turisticos.\nEnvie aqui: ");
+  scanf("%d",&quantidadesPontosTuristicosCarta1);
 
     //carta 2
 
@@ -92,12 +90,14 @@ int main() {
    printf("\nProduto Interno Bruto da cidade %s.\nEnvie aqui: ", nomeDaCidadeCarta2);
    scanf("%f", &produtoInternoBrutoCarta2);
 
+   
+   //Solicitacao para que o usuario digite a quantidade de pontos turisticos
+   printf("\nQuantidade de pontos turisticos.\nEnvie aqui: ");
+   scanf("%d",&quantidadesPontosTuristicosCarta2);
+
   // Área para exibição dos dados da cidade
 
   //Exibicao de dados inseridos pelo usuario para a carta 1
-
-   printf("\nQuantidade de pontos turisticos.\nEnvie aqui: ");
-   scanf("%d",&quantidadesPontosTuristicosCarta1);
    
    printf("\nCarta1:\n");
 
@@ -111,9 +111,15 @@ int main() {
 
    printf("\nArea: %.2fkm²", areaCarta1);
 
-   printf("\nPIB: %.2f\n", produtoInternoBrutoCarta1);
+   printf("\nPIB: %.2f", produtoInternoBrutoCarta1);
 
-   
+   printf("\nQuantidade de pontos turisticos: %d",quantidadesPontosTuristicosCarta1);
+
+   printf("\nDensidade Populacional: %.2f", quantidadeDeHabitantesCarta1/areaCarta1);
+
+   printf("\nPib per Capita: %.2f\n",(float) produtoInternoBrutoCarta1/quantidadeDeHabitantesCarta1);
+
+
    //Exibicao de dados inseridos pelo usuario para a carta 2
 
    printf("\nCarta2:\n");
@@ -128,7 +134,13 @@ int main() {
 
    printf("\nArea: %.2fkm²", areaCarta2);
 
-   printf("\nPIB: %.2f\n", produtoInternoBrutoCarta2);
+   printf("\nPIB: %.2f", produtoInternoBrutoCarta2);
+
+   printf("\nQuantidade de pontos turisticos: %d",quantidadesPontosTuristicosCarta2);
+
+   printf("\nDensidade Populacional: %.2f", quantidadeDeHabitantesCarta2/areaCarta2);
+
+   printf("\nPib per Capita: %.2f\n",(float) produtoInternoBrutoCarta2/quantidadeDeHabitantesCarta2);
 
 
 return 0;
