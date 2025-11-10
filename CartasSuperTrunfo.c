@@ -6,7 +6,7 @@
 
 int main() {
   // Área para definição das variáveis para armazenar as propriedades das cidades
-
+    
     //Variavel que armazena a sigla do estado escolhido
    char estadoCarta1 [3], estadoCarta2 [3];
 
@@ -17,12 +17,10 @@ int main() {
    char nomeDaCidadeCarta1[30], nomeDaCidadeCarta2[30];
    
    //Variavel que armazena a quantidade de habitantes da cidade 
-   // CORREÇÃO: Alterado para long double para maior precisão no Nível Mestre
-   long double quantidadeDeHabitantesCarta1, quantidadeDeHabitantesCarta2;
+   int quantidadeDeHabitantesCarta1, quantidadeDeHabitantesCarta2;
 
    //Variavel que armazena a area da cidade escolhida
    float areaCarta1, areaCarta2;
-
    
    //Variavel que armazena o produto interno bruto(PIB) da cidade
    float produtoInternoBrutoCarta1, produtoInternoBrutoCarta2;
@@ -55,8 +53,7 @@ int main() {
 
    //Solicitacao para que o usuario digite a quantida de habitantes
    printf("\nQuantidade de habitantes.\nEnvie aqui: ");
-   // CORREÇÃO: Usando %Lf para ler long double
-   scanf("%Lf", &quantidadeDeHabitantesCarta1);
+   scanf(" %d", &quantidadeDeHabitantesCarta1);
 
    //Solicitacao para que o usuario digite a area da cidade em km²
    printf("\nArea da cidade em km².\nEnvie aqui ");
@@ -88,8 +85,7 @@ int main() {
 
    //Solicitacao para que o usuario digite a quantida de habitantes
    printf("\nQuantidade de habitantes.\nEnvie aqui: ");
-   // CORREÇÃO: Usando %Lf para ler long double
-   scanf("%Lf", &quantidadeDeHabitantesCarta2);
+   scanf(" %d", &quantidadeDeHabitantesCarta2);
 
    //Solicitacao para que o usuario digite a area da cidade em km²
    printf("\nArea da cidade em km².\nEnvie aqui ");
@@ -106,10 +102,10 @@ int main() {
 
   // Área para cálculo dos dados (Local correto)
 
-   //Variavel que armazena e calcula o (PIB) "Produto Interno Bruto" da carta 1
-  produtoInternoBrutoPerCapitaCarta1 = (long double) produtoInternoBrutoCarta1/quantidadeDeHabitantesCarta1;
+   //Variavel que armazena e calcula o (PIB) "Produto Interno Bruto" per Capita da carta 1
+   produtoInternoBrutoPerCapitaCarta1 = (long double) produtoInternoBrutoCarta1/quantidadeDeHabitantesCarta1;
 
-   //Variavel que armazena e calcula o (PIB) "Produto Interno Bruto" da carta 2
+   //Variavel que armazena e calcula o (PIB) "Produto Interno Bruto per Capita" da carta 2
   produtoInternoBrutoPerCapitaCarta2 = (long double) produtoInternoBrutoCarta2/quantidadeDeHabitantesCarta2;
 
   //Variavel que armazena e calcula a densidade populacional da carta 1
@@ -118,7 +114,7 @@ int main() {
   //Variavel que armazena e calcula a densidade populacional da carta 2
   densidadePopulacionalCarta2 = (long double) quantidadeDeHabitantesCarta2 / areaCarta2;
 
-  // CORREÇÃO: Variável auxiliar para o Inverso da Densidade
+  // Variável auxiliar para o Inverso da Densidade
   long double inversoDensidade1 = (densidadePopulacionalCarta1 > 0) ? (1.0L / densidadePopulacionalCarta1) : 0.0L;
 
   //Variavel responsavel pelo calculo do super poder da carta 1
@@ -130,7 +126,7 @@ int main() {
   (long double) produtoInternoBrutoPerCapitaCarta1 +
   inversoDensidade1; // CORREÇÃO: Usando o INVERSO da densidade (1/Densidade)
 
-  // CORREÇÃO: Variável auxiliar para o Inverso da Densidade
+  //Variável auxiliar para o Inverso da Densidade
   long double inversoDensidade2 = (densidadePopulacionalCarta2 > 0) ? (1.0L / densidadePopulacionalCarta2) : 0.0L;
 
   //Variavel responsavel pelo calculo do super poder da carta 2
@@ -153,8 +149,7 @@ int main() {
 
    printf("\nCidade: %s", nomeDaCidadeCarta1);
 
-   // CORREÇÃO: Usando %Lf para exibir long double
-   printf("\nPopulacao: %.0Lf", quantidadeDeHabitantesCarta1);
+   printf("\nPopulacao: %d", quantidadeDeHabitantesCarta1);
 
    printf("\nArea: %.2fkm²", areaCarta1);
 
@@ -165,9 +160,9 @@ int main() {
    // CORREÇÃO: Usando %Lf para exibir long double
    printf("\nDensidade Populacional: %.2Lf", densidadePopulacionalCarta1);
 
-   printf("\nPib per Capita: %.2Lf\n",produtoInternoBrutoPerCapitaCarta1); // CORREÇÃO: Usando variável correta
+   printf("\nPib per Capita: %.2Lf",produtoInternoBrutoPerCapitaCarta1); // CORREÇÃO: Usando variável correta
 
-   printf("\nSuper poder: %.2Lf", superPoderCarta1 );
+   printf("\nSuper poder: %.2Lf\n", superPoderCarta1 );
 
 
    //Exibicao de dados inseridos pelo usuario para a carta 2
@@ -180,8 +175,7 @@ int main() {
 
    printf("\nCidade: %s", nomeDaCidadeCarta2);
 
-   // CORREÇÃO: Usando %Lf para exibir long double
-   printf("\nPopulacao: %.0Lf", quantidadeDeHabitantesCarta2);
+   printf("\nPopulacao: %d", quantidadeDeHabitantesCarta2);
 
    printf("\nArea: %.2fkm²", areaCarta2);
 
@@ -189,60 +183,99 @@ int main() {
 
    printf("\nQuantidade de pontos turisticos: %d",quantidadesPontosTuristicosCarta2);
 
-   // CORREÇÃO: Usando %Lf para exibir long double
    printf("\nDensidade Populacional: %.2Lf", densidadePopulacionalCarta2);
 
-   printf("\nPib per Capita: %.2Lf\n",produtoInternoBrutoPerCapitaCarta2); // CORREÇÃO: Usando variável correta
+   printf("\nPib per Capita: %.2Lf",produtoInternoBrutoPerCapitaCarta2); // CORREÇÃO: Usando variável correta
 
-   printf("\nSuper poder: %.2Lf", superPoderCarta2);
+   printf("\nSuper poder: %.2Lf\n", superPoderCarta2);
 
    
 
    //Exibição da comparacao das cartas ditadas pelo usuario
+  //Comparacao feita com if else, em que e determinada qual carta possui o valor mais alto em cada quesito
 
-      /*Print que realiza a comparacao das variaveis que armazenam dados acerca das  cartas 1 e 2,
-    com um operador ternario para definir o vencedor entre tal comparacao, resultando em 1 (verdadeiro)
-    e 0 (falso), caso a comparacao seja falsa o item apos o simbolo "?" sera executada se nao o item apos 
-    o simbolo ":" sera executado.
-   */
+   printf("\n------ COMPARACAO DE PONTUACAO ------\n");
 
-   printf("\n------COMPARACAO DE PONTUACAO (1=C1 vence, 0=C2 vence)------\n");
+  //Comparando a "quantidadeDeHabitantesCarta1" com a "quantidadeDeHabitantesCarta2".
+  printf("\nPopulacao: ");
+
+  if (quantidadeDeHabitantesCarta1 > quantidadeDeHabitantesCarta2){
+    printf("Carta 1 Vence!");
+  } else {
+    printf("Carta 2 Vence!");
+  }
+  
+
+  //Comparando a "areaCarta2" com a "areaCarta2".
+  printf("\nArea: ");
+
+  if (areaCarta1 > areaCarta2){
+    printf("Carta 1 Vence!");
+  } else {
+    printf("Carta 2 Vence!");
+  }
 
 
-  //E comparado e validado qual carta possui a maior quantidade de habitantes.
-  // CORREÇÃO: O MAIOR vence, e adicionado o formato (1) ou (0)
-   int pop_vence = (quantidadeDeHabitantesCarta1 > quantidadeDeHabitantesCarta2);
-   printf("Poulacao: %s venceu (%d)\n", pop_vence ? "Carta 1" : "Carta 2", pop_vence);
+  //Comparando a "produtoInternoBrutoCarta1" com a "produtoInternoBrutoCarta2".
+  printf("\nPIB: ");
 
-  //E comparado e validado qual carta possui a maior area.
-  // CORREÇÃO: O MAIOR vence, e adicionado o formato (1) ou (0)
-   int area_vence = (areaCarta1 > areaCarta2);
-   printf("Area: %s venceu (%d)\n", area_vence ? "Carta 1" : "Carta 2", area_vence);
+  if (produtoInternoBrutoCarta1 > produtoInternoBrutoCarta2) {
+    printf("Carta 1 Vence!");
+  } else {
+    printf("Carta 2 Vence!");
+  }
 
-  //E comparado e validado qual carta possui a maior PIB.
-  // CORREÇÃO: O MAIOR vence, e adicionado o formato (1) ou (0)
-  int pib_vence = (produtoInternoBrutoCarta1 > produtoInternoBrutoCarta2);
-  printf("PIB: %s venceu (%d)\n", pib_vence ? "Carta 1" : "Carta 2", pib_vence);
 
-  //E comparado e validado qual carta possui a maior quantidade de pontos turisticos.
-  // CORREÇÃO: O MAIOR vence, e adicionado o formato (1) ou (0)
-  int pt_vence = (quantidadesPontosTuristicosCarta1 > quantidadesPontosTuristicosCarta2);
-  printf("Pontos Turisticos: %s venceu (%d)\n", pt_vence ? "Carta 1" : "Carta 2", pt_vence);
+  //Comparando a "produtoInternoBrutoCarta1" com a "produtoInternoBrutoCarta2".
+  printf("\nNumero de pontos turisticos: ");
 
-  //E comparado e validado qual carta possui a maior densidade populacional.
-  // CORREÇÃO: O MENOR vence (<) e adicionado o formato (1) ou (0)
-  int densidade_vence = (densidadePopulacionalCarta1 < densidadePopulacionalCarta2);
-  printf("Densidade Populacional: %s venceu (%d)\n", densidade_vence ? "Carta 1" : "Carta 2", densidade_vence);
+   if (quantidadesPontosTuristicosCarta1 > quantidadesPontosTuristicosCarta2){
+    printf("Carta 1 Vence!");
+  } else {
+    printf("Carta 2 Vence!");
+  } 
 
-  //E comparado e validado qual carta possui a maior PIB per capita.
-  // CORREÇÃO: O MAIOR vence e adicionado o formato (1) ou (0)
-  int pib_pc_vence = (produtoInternoBrutoPerCapitaCarta1 > produtoInternoBrutoPerCapitaCarta2);
-  printf("Pib per Capita: %s venceu (%d)\n", pib_pc_vence ? "Carta 1" : "Carta 2", pib_pc_vence);
+  //Comparando a "densidadePopulacionalCarta1" com a "densidadePopulacionalCarta2".
+  printf("\nDensidade populacional: ");
 
-  //E comparado e validado qual carta possui o "Super Poder" mais alto.
-  // CORREÇÃO: O MAIOR vence e usa a variável correta (superPoder)
-  int sp_vence = (superPoderCarta1 > superPoderCarta2);
-  printf("Super poder: %s venceu (%d)\n", sp_vence ? "Carta 1" : "Carta 2", sp_vence);
+  if (densidadePopulacionalCarta1 > densidadePopulacionalCarta2) { 
+    printf("Carta 1 Vence!");
+  } else {
+    printf("Carta 2 Vence!");
+  }  
+
+
+  //Comparando a "produtoInternoBrutoPerCapitaCarta1" com a "produtoInternoBrutoPerCapitaCarta2".
+  printf("\nPib per Capita: ");
+
+  if (produtoInternoBrutoPerCapitaCarta1 > produtoInternoBrutoPerCapitaCarta2){
+    printf("Carta 1 Vence!");
+  } else {
+    printf("Carta 2 Vence!");
+  }
+
+  
+  //Comparando a "superPoderCarta1" com a "superPoderCarta2".
+  printf("\nSuper poder: ");
+
+  if (superPoderCarta1 > superPoderCarta2){
+    printf("Carta 1 Vence!");
+  } else {
+    printf("Carta 2 Vence!");
+  }
+
+printf("\nCarta 1 - %s (%s): %Lf" ,nomeDaCidadeCarta1 , estadoCarta1, superPoderCarta1);
+printf("Carta 2 - %s (%s): %Lf\n" ,nomeDaCidadeCarta2 , estadoCarta2, superPoderCarta2);
+
+  printf("\n----------------------------------------------------\n");
+
+  printf("Resultado: ");
+  
+  if (superPoderCarta1 > superPoderCarta2) {
+    printf("Carta 1 - %s (%s) venceu!\n\n", nomeDaCidadeCarta1 , estadoCarta1 );
+  }else{
+    printf("Carta 2 - %s (%s) venceu!\n\n", nomeDaCidadeCarta2 , estadoCarta2 );
+  }
 
 return 0;
 }
