@@ -7,6 +7,9 @@
 int main() {
   // Área para definição das variáveis para armazenar as propriedades das cidades
     
+    //Variavel que armazena a escolha do atributo,que ha de ser comparado entre as cartas
+    int atributoEscolhido;
+
     //Variavel que armazena a sigla do estado escolhido
    char estadoCarta1 [3], estadoCarta2 [3];
 
@@ -26,7 +29,7 @@ int main() {
    float produtoInternoBrutoCarta1, produtoInternoBrutoCarta2;
 
    //Quantidade de pontos turisticos da cidade
-   int quantidadesPontosTuristicosCarta1, quantidadesPontosTuristicosCarta2;
+   int quantidadeDePontosTuristicosCarta1, quantidadeDePontosTuristicosCarta2;
 
     // Variáveis Calculadas (Declaração sem inicialização)
     long double produtoInternoBrutoPerCapitaCarta1, produtoInternoBrutoPerCapitaCarta2;
@@ -66,7 +69,7 @@ int main() {
 
   //Solicitacao para que o usuario digite a quantidade de pontos turisticos
   printf("\nQuantidade de pontos turisticos.\nEnvie aqui: ");
-  scanf("%d",&quantidadesPontosTuristicosCarta1);
+  scanf("%d",&quantidadeDePontosTuristicosCarta1);
 
     //carta 2
 
@@ -98,7 +101,7 @@ int main() {
    
    //Solicitacao para que o usuario digite a quantidade de pontos turisticos
    printf("\nQuantidade de pontos turisticos.\nEnvie aqui: ");
-   scanf("%d",&quantidadesPontosTuristicosCarta2);
+   scanf("%d",&quantidadeDePontosTuristicosCarta2);
 
   // Área para cálculo dos dados (Local correto)
 
@@ -122,7 +125,7 @@ int main() {
   (long double) quantidadeDeHabitantesCarta1 + 
   (long double) areaCarta1 +
   (long double) produtoInternoBrutoCarta1 +
-  (long double) quantidadesPontosTuristicosCarta1 +
+  (long double) quantidadeDePontosTuristicosCarta1 +
   (long double) produtoInternoBrutoPerCapitaCarta1 +
   inversoDensidade1; // CORREÇÃO: Usando o INVERSO da densidade (1/Densidade)
 
@@ -134,7 +137,7 @@ int main() {
   (long double) quantidadeDeHabitantesCarta2 + 
   (long double) areaCarta2 +
   (long double) produtoInternoBrutoCarta2 +
-  (long double) quantidadesPontosTuristicosCarta2 +
+  (long double) quantidadeDePontosTuristicosCarta2 +
   (long double) produtoInternoBrutoPerCapitaCarta2 +
   inversoDensidade2; // CORREÇÃO: Usando o INVERSO da densidade (1/Densidade)
 
@@ -155,7 +158,7 @@ int main() {
 
    printf("\nPIB: %.2f", produtoInternoBrutoCarta1);
 
-   printf("\nQuantidade de pontos turisticos: %d",quantidadesPontosTuristicosCarta1);
+   printf("\nQuantidade de pontos turisticos: %d",quantidadeDePontosTuristicosCarta1);
 
    // CORREÇÃO: Usando %Lf para exibir long double
    printf("\nDensidade Populacional: %.2Lf", densidadePopulacionalCarta1);
@@ -181,7 +184,7 @@ int main() {
 
    printf("\nPIB: %.2f", produtoInternoBrutoCarta2);
 
-   printf("\nQuantidade de pontos turisticos: %d",quantidadesPontosTuristicosCarta2);
+   printf("\nQuantidade de pontos turisticos: %d",quantidadeDePontosTuristicosCarta2);
 
    printf("\nDensidade Populacional: %.2Lf", densidadePopulacionalCarta2);
 
@@ -229,7 +232,7 @@ int main() {
   //Comparando a "produtoInternoBrutoCarta1" com a "produtoInternoBrutoCarta2".
   printf("\nNumero de pontos turisticos: ");
 
-   if (quantidadesPontosTuristicosCarta1 > quantidadesPontosTuristicosCarta2){
+   if (quantidadeDePontosTuristicosCarta1 > quantidadeDePontosTuristicosCarta2){
     printf("Carta 1 Vence!");
   } else {
     printf("Carta 2 Vence!");
@@ -264,17 +267,120 @@ int main() {
     printf("Carta 2 Vence!");
   }
 
-printf("\nCarta 1 - %s (%s): %Lf" ,nomeDaCidadeCarta1 , estadoCarta1, superPoderCarta1);
-printf("Carta 2 - %s (%s): %Lf\n" ,nomeDaCidadeCarta2 , estadoCarta2, superPoderCarta2);
+  printf("\nCarta 1 - %s (%s): %Lf" ,nomeDaCidadeCarta1 , estadoCarta1, superPoderCarta1);
+  printf("Carta 2 - %s (%s): %Lf\n" ,nomeDaCidadeCarta2 , estadoCarta2, superPoderCarta2);
 
+  printf("\nEscolha o atributo para comparar as cartas (Digite o numero correspondente): \n");
+  printf("----------------------------------------------------\n");
+  printf(
+    "1 - População \n 2 - Area \n 3 - PIB \n 4-  Numero de Pontos Turisticos \n 5 - Densidade Demografica "
+  );
+    scanf("%d", &atributoEscolhido);
+
+  
   printf("\n----------------------------------------------------\n");
 
-  printf("Resultado: ");
+  printf("Resultado: "); 
   
-  if (superPoderCarta1 > superPoderCarta2) {
-    printf("Carta 1 - %s (%s) venceu!\n\n", nomeDaCidadeCarta1 , estadoCarta1 );
-  }else{
-    printf("Carta 2 - %s (%s) venceu!\n\n", nomeDaCidadeCarta2 , estadoCarta2 );
+  switch (atributoEscolhido)
+  {
+  //Comparando a "quantidadeDeHabitantesCarta1" com a "quantidadeDeHabitantesCarta2".
+  case 1:
+    if (quantidadeDeHabitantesCarta1 == quantidadeDeHabitantesCarta2) {
+      printf("Houve um empate entre a cidade %s e %s.", nomeDaCidadeCarta1, nomeDaCidadeCarta2);
+
+    }else if (quantidadeDeHabitantesCarta1 > quantidadeDeHabitantesCarta2) {
+    
+      printf("Vencedor: %s", nomeDaCidadeCarta1);
+
+    }else if (quantidadeDeHabitantesCarta1 < quantidadeDeHabitantesCarta2) {
+    
+    printf("Vencedor: %s", nomeDaCidadeCarta2);
+
+    }
+    break;
+
+      //Comparando "areaCarta1" com a "areaCarta2"
+    case 2: 
+    if (areaCarta1 == areaCarta2){
+
+      printf("Houve um empate entre a cidade %s e %s.", nomeDaCidadeCarta1, nomeDaCidadeCarta2);
+    
+    }else if (areaCarta1 > areaCarta2) {
+
+      printf("Vencedor: %s", nomeDaCidadeCarta1);
+
+    }else if (areaCarta1 < areaCarta2)
+    {
+
+    printf("Vencedor: %s", nomeDaCidadeCarta2);
+    
+    }
+    break;
+  
+    //Comparando "produtoInternoBrutoCarta1" com a "produtoInternoBrutoCarta1"
+  case 3: 
+    if (produtoInternoBrutoCarta1== produtoInternoBrutoCarta2){
+
+      printf("Houve um empate entre a cidade %s e %s.", nomeDaCidadeCarta1, nomeDaCidadeCarta2);
+    
+    }else if (produtoInternoBrutoCarta1 > produtoInternoBrutoCarta2) {
+
+      printf("Vencedor: %s", nomeDaCidadeCarta1);
+
+    }else if (produtoInternoBrutoCarta1 < produtoInternoBrutoCarta2)
+    {
+
+    printf("Vencedor: %s", nomeDaCidadeCarta2);
+    
+    }
+    break;
+
+  //Comparando a "quantidadeDePontosTuristicosCarta1quantidade" com a "quantidadeDePontosTuristicosCarta1"
+  case 4: 
+    if (quantidadeDePontosTuristicosCarta1 == quantidadeDePontosTuristicosCarta2 ) {
+
+      printf("Houve um empate entre a cidade %s e %s.", nomeDaCidadeCarta1, nomeDaCidadeCarta2);
+    
+    }else if (quantidadeDePontosTuristicosCarta1 > quantidadeDePontosTuristicosCarta2) {
+
+      printf("Vencedor: %s", nomeDaCidadeCarta1);
+
+    }else if (quantidadeDePontosTuristicosCarta1 < quantidadeDePontosTuristicosCarta2)
+    {
+
+      printf("Vencedor: %s", nomeDaCidadeCarta2);
+    
+    }
+
+    break;
+
+  //Comparando a "densidadePopulacionalCarta1" com a "densidadePopulacionalCarta2"
+
+  case 5: 
+
+    if (densidadePopulacionalCarta1 == densidadePopulacionalCarta2){
+
+      printf("Houve um empate entre a cidade %s e %s.", nomeDaCidadeCarta1, nomeDaCidadeCarta2);
+    
+    }else if (densidadePopulacionalCarta1 < densidadePopulacionalCarta2) {
+
+      printf("Vencedor: %s", nomeDaCidadeCarta1);
+
+    }else if (densidadePopulacionalCarta1 > densidadePopulacionalCarta2){
+
+    printf("Vencedor: %s", nomeDaCidadeCarta2);
+    
+    }
+
+    break;
+
+  default: 
+
+    printf("Opção inválida!");
+
+    break;
+
   }
 
 return 0;
