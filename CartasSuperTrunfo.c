@@ -7,9 +7,9 @@
 int main() {
   // Área para definição das variáveis para armazenar as propriedades das cidades
     
-    long float pontosTotais1, pontosTotais2;
+   long double pontosTotais1, pontosTotais2;
     //Variavel que armazena a escolha dos atributos,que ha de ser comparado entre as cartas
-    int atributoEscolhido1,atributoEscolhido2 ;
+   int atributoEscolhido1,atributoEscolhido2 ;
 
     //Variavel que armazena a sigla do estado escolhido
    char paisCarta1 [3], paisCarta2 [3];
@@ -33,10 +33,15 @@ int main() {
    int quantidadeDePontosTuristicosCarta1, quantidadeDePontosTuristicosCarta2;
 
     // Variáveis Calculadas (Declaração sem inicialização)
-    long double produtoInternoBrutoPerCapitaCarta1, produtoInternoBrutoPerCapitaCarta2;
-    long double densidadePopulacionalCarta1, densidadePopulacionalCarta2;
-    long double superPoderCarta1, superPoderCarta2;
+   long double produtoInternoBrutoPerCapitaCarta1, produtoInternoBrutoPerCapitaCarta2;
 
+   long double densidadePopulacionalCarta1, densidadePopulacionalCarta2;
+
+   long double superPoderCarta1, superPoderCarta2;
+
+   long double inversoDensidade1, inversoDensidade2;
+
+   int contadorDeVitoriasPorAtributoCarta1 = 0, contadorDeVitoriasPorAtributoCarta2 = 0;
 
   // Área para entrada de dados
 
@@ -49,7 +54,7 @@ int main() {
 
    //Solicitacao para que o usuario digite o um codigo para sua carta
    printf("\nCodigo de forma que seja aparente a sigla do estado e numeracao ex:'ES01'.\nEnvie aqui: ");
-   scanf("%s" ,codigoCarta1);
+   scanf(" %s" ,codigoCarta1);
 
    //Solicitacao para que o usuario digite o nome da cidade 
    printf("\nNome da cidade.\nEnvie aqui: ");
@@ -72,6 +77,9 @@ int main() {
   printf("\nQuantidade de pontos turisticos.\nEnvie aqui: ");
   scanf("%d",&quantidadeDePontosTuristicosCarta1);
 
+
+
+
     //carta 2
 
    //Solicitacao para que o usuario digite o um estado 
@@ -89,7 +97,7 @@ int main() {
 
    //Solicitacao para que o usuario digite a quantida de habitantes
    printf("\nQuantidade de habitantes.\nEnvie aqui: ");
-   scanf(" %d", &quantidadeDeHabitantesCarta2);
+   scanf("%d", &quantidadeDeHabitantesCarta2);
 
    //Solicitacao para que o usuario digite a area da cidade em km²
    printf("\nArea da cidade em km².\nEnvie aqui ");
@@ -118,8 +126,8 @@ int main() {
   //Variavel que armazena e calcula a densidade populacional da carta 2
   densidadePopulacionalCarta2 = (long double) quantidadeDeHabitantesCarta2 / areaCarta2;
 
-  // Variável auxiliar para o Inverso da Densidade
-  long double inversoDensidade1 = (densidadePopulacionalCarta1 > 0) ? (1.0L / densidadePopulacionalCarta1) : 0.0L;
+  //Variável auxiliar para o Inverso da Densidade
+  inversoDensidade1 = (densidadePopulacionalCarta1 > 0L) ? (1.0L / densidadePopulacionalCarta1) : 0.0L;
 
   //Variavel responsavel pelo calculo do super poder da carta 1
   superPoderCarta1 =
@@ -129,9 +137,9 @@ int main() {
   (long double) quantidadeDePontosTuristicosCarta1 +
   (long double) produtoInternoBrutoPerCapitaCarta1 +
   inversoDensidade1; // CORREÇÃO: Usando o INVERSO da densidade (1/Densidade)
-
+  
   //Variável auxiliar para o Inverso da Densidade
-  long double inversoDensidade2 = (densidadePopulacionalCarta2 > 0) ? (1.0L / densidadePopulacionalCarta2) : 0.0L;
+  inversoDensidade2 = (densidadePopulacionalCarta2 > 0L) ? (1.0L / densidadePopulacionalCarta2) : 0.0L;
 
   //Variavel responsavel pelo calculo do super poder da carta 2
   superPoderCarta2 =
@@ -143,78 +151,45 @@ int main() {
   inversoDensidade2; // CORREÇÃO: Usando o INVERSO da densidade (1/Densidade)
 
 
-  //Exibicao de dados inseridos pelo usuario para a carta 1
-   
-   printf("\nCarta1:\n");
+   //Comparação de dados obtidos pela entrada ou compostos pela entrada realizada pelo usuario
+   printf("---------- Comparação de valores das cartas ---------\n");
+    printf("População: %s", (quantidadeDeHabitantesCarta1 > quantidadeDeHabitantesCarta2) ? "Carta 1 venceu.\n" : "Carta 2 Venceu.......\n");
 
-   printf("\nEstado: %s", paisCarta1);
+    printf("Área: %s", (areaCarta1 > areaCarta2) ? "Carta 1 venceu.\n" : "Carta 2 venceu.\n");
+    
+    printf("PIB: %s", (produtoInternoBrutoCarta1 > produtoInternoBrutoCarta2) ? "Carta 1 venceu.\n" : "Carta 2 venceu.\n");
 
-   printf("\nCodigo da carta: %s", codigoCarta1);
+    printf("Pontos Turisticos: %s", (quantidadeDePontosTuristicosCarta1 > quantidadeDePontosTuristicosCarta2) ? "Carta 1 venceu.\n" : "Carta 2 venceu.\n");
 
-   printf("\nCidade: %s", nomeDoPaisCarta1);
-
-   printf("\nPopulacao: %d", quantidadeDeHabitantesCarta1);
-
-   printf("\nArea: %.2fkm²", areaCarta1);
-
-   printf("\nPIB: %.2f", produtoInternoBrutoCarta1);
-
-   printf("\nQuantidade de pontos turisticos: %d",quantidadeDePontosTuristicosCarta1);
-
-   // CORREÇÃO: Usando %Lf para exibir long double
-   printf("\nDensidade Populacional: %.2Lf", densidadePopulacionalCarta1);
-
-   printf("\nPib per Capita: %.2Lf",produtoInternoBrutoPerCapitaCarta1); // CORREÇÃO: Usando variável correta
-
-   printf("\nSuper poder: %.2Lf\n", superPoderCarta1 );
-
-
-   //Exibicao de dados inseridos pelo usuario para a carta 2
-
-   printf("\nCarta2:\n");
-
-   printf("\nEstado: %s", paisCarta2);
-
-   printf("\nCodigo da carta: %s", codigoCarta2);
-
-   printf("\nCidade: %s", nomeDoPaisCarta2);
-
-   printf("\nPopulacao: %d", quantidadeDeHabitantesCarta2);
-
-   printf("\nArea: %.2fkm²", areaCarta2);
-
-   printf("\nPIB: %.2f", produtoInternoBrutoCarta2);
-
-   printf("\nQuantidade de pontos turisticos: %d",quantidadeDePontosTuristicosCarta2);
-
-   printf("\nDensidade Populacional: %.2Lf", densidadePopulacionalCarta2);
-
-   printf("\nPib per Capita: %.2Lf",produtoInternoBrutoPerCapitaCarta2); // CORREÇÃO: Usando variável correta
-
-   printf("\nSuper poder: %.2Lf\n", superPoderCarta2);
-
-
-  printf("\nCarta 1 - %s (%s): %Lf" ,nomeDoPaisCarta1 , paisCarta1, superPoderCarta1);
-  printf("Carta 2 - %s (%s): %Lf\n" ,nomeDoPaisCarta2 , paisCarta2, superPoderCarta2);
+    printf("Densidade Populacional: %s", (densidadePopulacionalCarta1 > densidadePopulacionalCarta2) ? "Carta 1 venceu.\n" : "Carta 2 venceu.\n");
+    
+    printf("PIB per capita: %s", (produtoInternoBrutoPerCapitaCarta1 > produtoInternoBrutoPerCapitaCarta2) ? "Carta 1 venceu.\n" : "Carta 2 venceu\n");
+    
+    printf("Super poder: %s", (superPoderCarta1 > superPoderCarta2) ? "Carta 1 venceu.\n" : "Carta 2 venceu.\n");
 
   //Digitando o primeiro atributo escolhido
   printf("\nEscolha o atributo para comparar as cartas (Digite o numero correspondente): \n");
+
   printf("----------------------------------------------------\n");
+
   printf(
     "1 - População \n 2 - Area \n 3 - PIB \n 4-  Numero de Pontos Turisticos \n 5 - Densidade Demografica "
   );
+    printf("\n");
     printf("->");
-  
-    printf("%s\n%s\n%s\n%s\n" , 
-    (atributoEscolhido1 == 1) ? "1 - População" : "2 - Area"  ,
-    (atributoEscolhido1 == 2 ) ? "2 - Area" : "1 - População"  , 
-    (atributoEscolhido1 == 3) ? "3 - PIB" : "2 - Area", 
-    (atributoEscolhido1 == 4) ? "4-  Numero de Pontos Turisticos" : "5 - Densidade Demografica "
+      scanf("%d", &atributoEscolhido1);
+        printf("\n\n\n\n\n\n-----------------------------------------------------\n");
+    
+    printf("%s%s%s%s%s" , 
+    (atributoEscolhido1 == 1) ? "" : "1 - População\n"  ,
+    (atributoEscolhido1 == 2 ) ? "" :"2 - Area\n", 
+    (atributoEscolhido1 == 3) ? "" : "3 - PIB\n", 
+    (atributoEscolhido1 == 4) ? "" : "4-  Numero de Pontos Turisticos\n",
+    (atributoEscolhido1 == 5) ? "" : "5 - Densidade Demografica\n"
     );
-    printf("->");
-    scanf("%d", &atributoEscolhido1);
-
-
+    
+    printf("\n->");
+    scanf("%d", &atributoEscolhido2);
   
   printf("\n----------------------------------------------------\n");
 
@@ -225,70 +200,90 @@ int main() {
   {
   //Comparando a "quantidadeDeHabitantesCarta1" com a "quantidadeDeHabitantesCarta2".
   case 1:
+
     if (quantidadeDeHabitantesCarta1 == quantidadeDeHabitantesCarta2) {
       printf("Houve um empate entre a cidade %s e %s.", nomeDoPaisCarta1, nomeDoPaisCarta2);
+      contadorDeVitoriasPorAtributoCarta1++,contadorDeVitoriasPorAtributoCarta2++;
 
     }else if (quantidadeDeHabitantesCarta1 > quantidadeDeHabitantesCarta2) {
     
       printf("Vencedor: %s", nomeDoPaisCarta1);
+      contadorDeVitoriasPorAtributoCarta1++;
 
     }else if (quantidadeDeHabitantesCarta1 < quantidadeDeHabitantesCarta2) {
     
     printf("Vencedor: %s", nomeDoPaisCarta2);
+    contadorDeVitoriasPorAtributoCarta2++;
 
     }
     break;
 
       //Comparando "areaCarta1" com a "areaCarta2"
     case 2: 
+
     if (areaCarta1 == areaCarta2){
 
       printf("Houve um empate entre a cidade %s e %s.", nomeDoPaisCarta1, nomeDoPaisCarta2);
+      contadorDeVitoriasPorAtributoCarta1++,contadorDeVitoriasPorAtributoCarta2++;
+
     
     }else if (areaCarta1 > areaCarta2) {
 
       printf("Vencedor: %s", nomeDoPaisCarta1);
+      contadorDeVitoriasPorAtributoCarta1++;
 
     }else if (areaCarta1 < areaCarta2)
     {
 
     printf("Vencedor: %s", nomeDoPaisCarta2);
+    contadorDeVitoriasPorAtributoCarta2++;
     
     }
     break;
   
     //Comparando "produtoInternoBrutoCarta1" com a "produtoInternoBrutoCarta1"
   case 3: 
+
     if (produtoInternoBrutoCarta1== produtoInternoBrutoCarta2){
 
       printf("Houve um empate entre a cidade %s e %s.", nomeDoPaisCarta1, nomeDoPaisCarta2);
+      contadorDeVitoriasPorAtributoCarta1++,contadorDeVitoriasPorAtributoCarta2++;
     
     }else if (produtoInternoBrutoCarta1 > produtoInternoBrutoCarta2) {
 
       printf("Vencedor: %s", nomeDoPaisCarta1);
+      contadorDeVitoriasPorAtributoCarta1++;
 
     }else if (produtoInternoBrutoCarta1 < produtoInternoBrutoCarta2)
-    {
 
     printf("Vencedor: %s", nomeDoPaisCarta2);
+    contadorDeVitoriasPorAtributoCarta2++;
+
+    {
+
+
     
     }
     break;
 
   //Comparando a "quantidadeDePontosTuristicosCarta1quantidade" com a "quantidadeDePontosTuristicosCarta1"
   case 4: 
+    
     if (quantidadeDePontosTuristicosCarta1 == quantidadeDePontosTuristicosCarta2 ) {
 
       printf("Houve um empate entre a cidade %s e %s.", nomeDoPaisCarta1, nomeDoPaisCarta2);
+    contadorDeVitoriasPorAtributoCarta1++, contadorDeVitoriasPorAtributoCarta2++;
     
     }else if (quantidadeDePontosTuristicosCarta1 > quantidadeDePontosTuristicosCarta2) {
 
       printf("Vencedor: %s", nomeDoPaisCarta1);
+      contadorDeVitoriasPorAtributoCarta1++;
 
     }else if (quantidadeDePontosTuristicosCarta1 < quantidadeDePontosTuristicosCarta2)
     {
 
       printf("Vencedor: %s", nomeDoPaisCarta2);
+        contadorDeVitoriasPorAtributoCarta2++;
     
     }
 
@@ -301,14 +296,17 @@ int main() {
     if (densidadePopulacionalCarta1 == densidadePopulacionalCarta2){
 
       printf("Houve um empate entre a cidade %s e %s.", nomeDoPaisCarta1, nomeDoPaisCarta2);
+      contadorDeVitoriasPorAtributoCarta1++, contadorDeVitoriasPorAtributoCarta2++;
     
     }else if (densidadePopulacionalCarta1 < densidadePopulacionalCarta2) {
 
       printf("Vencedor: %s", nomeDoPaisCarta1);
+      contadorDeVitoriasPorAtributoCarta1++;
 
     }else if (densidadePopulacionalCarta1 > densidadePopulacionalCarta2){
 
     printf("Vencedor: %s", nomeDoPaisCarta2);
+    contadorDeVitoriasPorAtributoCarta2++;
     
     }
 
@@ -330,14 +328,17 @@ switch (atributoEscolhido2 )
   case 1:
     if (quantidadeDeHabitantesCarta1 == quantidadeDeHabitantesCarta2) {
       printf("Houve um empate entre a cidade %s e %s.", nomeDoPaisCarta1, nomeDoPaisCarta2);
+      contadorDeVitoriasPorAtributoCarta1++, contadorDeVitoriasPorAtributoCarta2++;
 
     }else if (quantidadeDeHabitantesCarta1 > quantidadeDeHabitantesCarta2) {
     
       printf("Vencedor: %s", nomeDoPaisCarta1);
+      contadorDeVitoriasPorAtributoCarta1++;
 
     }else if (quantidadeDeHabitantesCarta1 < quantidadeDeHabitantesCarta2) {
     
     printf("Vencedor: %s", nomeDoPaisCarta2);
+    contadorDeVitoriasPorAtributoCarta2++;
 
     }
     break;
@@ -347,15 +348,18 @@ switch (atributoEscolhido2 )
     if (areaCarta1 == areaCarta2){
 
       printf("Houve um empate entre a cidade %s e %s.", nomeDoPaisCarta1, nomeDoPaisCarta2);
+      contadorDeVitoriasPorAtributoCarta1++, contadorDeVitoriasPorAtributoCarta2++;
     
     }else if (areaCarta1 > areaCarta2) {
 
       printf("Vencedor: %s", nomeDoPaisCarta1);
+      contadorDeVitoriasPorAtributoCarta1++;
 
     }else if (areaCarta1 < areaCarta2)
     {
 
     printf("Vencedor: %s", nomeDoPaisCarta2);
+    contadorDeVitoriasPorAtributoCarta2++;
     
     }
     break;
@@ -365,15 +369,18 @@ switch (atributoEscolhido2 )
     if (produtoInternoBrutoCarta1== produtoInternoBrutoCarta2){
 
       printf("Houve um empate entre a cidade %s e %s.", nomeDoPaisCarta1, nomeDoPaisCarta2);
+    contadorDeVitoriasPorAtributoCarta1++, contadorDeVitoriasPorAtributoCarta2++;
     
     }else if (produtoInternoBrutoCarta1 > produtoInternoBrutoCarta2) {
 
       printf("Vencedor: %s", nomeDoPaisCarta1);
+      contadorDeVitoriasPorAtributoCarta1++;
 
     }else if (produtoInternoBrutoCarta1 < produtoInternoBrutoCarta2)
     {
 
     printf("Vencedor: %s", nomeDoPaisCarta2);
+    contadorDeVitoriasPorAtributoCarta2++;
     
     }
     break;
@@ -383,15 +390,18 @@ switch (atributoEscolhido2 )
     if (quantidadeDePontosTuristicosCarta1 == quantidadeDePontosTuristicosCarta2 ) {
 
       printf("Houve um empate entre a cidade %s e %s.", nomeDoPaisCarta1, nomeDoPaisCarta2);
+      contadorDeVitoriasPorAtributoCarta1++, contadorDeVitoriasPorAtributoCarta2++;
     
     }else if (quantidadeDePontosTuristicosCarta1 > quantidadeDePontosTuristicosCarta2) {
 
       printf("Vencedor: %s", nomeDoPaisCarta1);
+      contadorDeVitoriasPorAtributoCarta1++;
 
     }else if (quantidadeDePontosTuristicosCarta1 < quantidadeDePontosTuristicosCarta2)
     {
 
       printf("Vencedor: %s", nomeDoPaisCarta2);
+      contadorDeVitoriasPorAtributoCarta2++;
     
     }
 
@@ -404,14 +414,17 @@ switch (atributoEscolhido2 )
     if (densidadePopulacionalCarta1 == densidadePopulacionalCarta2){
 
       printf("Houve um empate entre a cidade %s e %s.", nomeDoPaisCarta1, nomeDoPaisCarta2);
+      contadorDeVitoriasPorAtributoCarta1++, contadorDeVitoriasPorAtributoCarta2++;
     
     }else if (densidadePopulacionalCarta1 < densidadePopulacionalCarta2) {
 
       printf("Vencedor: %s", nomeDoPaisCarta1);
+      contadorDeVitoriasPorAtributoCarta1++;
 
     }else if (densidadePopulacionalCarta1 > densidadePopulacionalCarta2){
 
     printf("Vencedor: %s", nomeDoPaisCarta2);
+    contadorDeVitoriasPorAtributoCarta2++;
     
     }
 
@@ -469,8 +482,8 @@ switch (atributoEscolhido2 )
        }else if (atributoEscolhido1 == 2 || atributoEscolhido1 == 5 &&
         atributoEscolhido2 == 5 || atributoEscolhido2 == 2){
 
-    pontosTotais1 = areaCarta1 + densidadePopulacionalCarta1;
-    pontosTotais2 = areaCarta2 + densidadePopulacionalCarta2;
+    pontosTotais1 = (long double) areaCarta1 + densidadePopulacionalCarta1;
+    pontosTotais2 = (long double) areaCarta2 + densidadePopulacionalCarta2;
 
         }
 
@@ -498,8 +511,11 @@ switch (atributoEscolhido2 )
     pontosTotais2 = (long double) densidadePopulacionalCarta2 + densidadePopulacionalCarta2;
 
       }
-      printf("\nPaís: %s pontuação total -> %2.Lf", nomeDoPaisCarta1, pontosTotais1);
-      printf("\nPaís: %s pontuação total -> %2.Lf", nomeDoPaisCarta2, pontosTotais2);
+
+      printf("\nPaís: %s \nStatus: %s\npontuação total -> %2.Lf", nomeDoPaisCarta1,(contadorDeVitoriasPorAtributoCarta1 > contadorDeVitoriasPorAtributoCarta2)
+      ? "Vencedor" : "Perdedor", pontosTotais1);
+      printf("\nPaís: %s \nStatus: %s\npontuação total -> %2.Lf", nomeDoPaisCarta2,(contadorDeVitoriasPorAtributoCarta1 < contadorDeVitoriasPorAtributoCarta2)
+      ? "Vencedor" : "Perdedor", pontosTotais2);
 
 return 0;
 }
